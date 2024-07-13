@@ -28,11 +28,33 @@ async function run() {
         // Connect the client to the server
         await client.connect();
 
+        const userCollection = client.db('productsDB').collection('users');
         const productCollection = client.db('productsDB').collection('products');
         const serviceCollection = client.db('productsDB').collection('services');
         const blogCollection = client.db('productsDB').collection('blogs');
 
+        // user info api
+        app.get('/users', async (req, res) => {
+            try {
+                const cursor = userCollection.find();
+                const result = await cursor.toArray();
+                res.send(result);
+            } catch (error) {
+                console.error('Error fetching users:', error);
+                res.status(500).send({ message: 'Error fetching users', error });
+            }
+        });
+        app.post('/users', async(req,res)=>{
+            const user = req.body;
+            const result = await userCollection.insertOne(user);
+            res.send(result);
+
+        })
+
+
+
         // Create a new product
+     
         app.post('/products', async (req, res) => {
             const product = req.body;
             try {
