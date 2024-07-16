@@ -48,7 +48,7 @@ async function run() {
         // Create a new specialist request
         app.post('/specialists', async (req, res) => {
             const specialist = req.body;
-            console.log(specialist);
+            // console.log(specialist);
             try {
                 const result = await specialistCollection.insertOne(specialist);
 
