@@ -346,8 +346,8 @@ async function run() {
                 const result = await serviceCollection.deleteOne(query);
                 res.send(result);
             } catch (error) {
-                console.error('Error deleting service:', error);
-                res.status(500).send({ message: 'Error deleting service', error });
+                console.error('Error to delete services:', error);
+                res.status(500).send({ message: 'Error deleting services', error });
             }
         });
 
