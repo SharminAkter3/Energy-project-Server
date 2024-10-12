@@ -194,32 +194,7 @@ async function run() {
             }
         });
 
-        /*   app.put('/users/:email', async (req, res) => {
-              try {
-                  const email = req.params.email;
-                  const updatedUser = req.body;
-                  
-                  // Ensure the `image` field is included even if it does not exist in the database
-                  const updateQuery = {
-                      $set: updatedUser
-                  };
-          
-                  const result = await userCollection.updateOne(
-                      { email: email },
-                      updateQuery
-                  );
-          
-                  if (result.matchedCount > 0) {
-                      res.send({ message: 'User updated successfully' });
-                  } else {
-                      res.status(404).send({ message: 'User not found' });
-                  }
-              } catch (error) {
-                  console.error('Error updating user:', error);
-                  res.status(500).send({ message: 'Error updating user', error });
-              }
-          }); */
-
+        
         // Delete user by email address
         app.delete('/users/:email', async (req, res) => {
             try {
@@ -371,8 +346,8 @@ async function run() {
                 const result = await serviceCollection.deleteOne(query);
                 res.send(result);
             } catch (error) {
-                console.error('Error deleting service:', error);
-                res.status(500).send({ message: 'Error deleting service', error });
+                console.error('Error to delete services:', error);
+                res.status(500).send({ message: 'Error deleting services', error });
             }
         });
 
